@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Łukasz Kucharczyk" />
+    <title>Zegar</title>
+    <script>
+        function clock()
+        {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var lab = "00:00";
+            var b = "";
+            var sum = h * 60 + m + 1;
+
+            if (sum > 1015) {
+                lab = "7:10:00";  
+                b = "przerwa";
+            } else if (sum > 965) {
+                lab = "16:55:00";
+                b = "lekcja";
+            } else if (sum > 920) {
+                lab = "16:05:00";  
+                b = "przerwa";
+            } else if (sum > 915) {
+                lab = "15:20:00"; 
+                b = "lekcja";
+            } else if (sum > 870) {
+                lab = "15:15:00";  
+                b = "przerwa";
+            } else if (sum > 865) {
+                lab = "14:30:00"; 
+                b = "lekcja";
+            } else if (sum > 820) {
+                lab = "14:25:00";  
+                b = "przerwa";
+            } else if (sum > 810) {
+                lab = "13:40:00"; 
+                b = "lekcja";
+            } else if (sum > 765) {
+                lab = "13:30:00";  
+                b = "przerwa";
+            } else if (sum > 755) {
+                lab = "12:45:00"; 
+                b = "lekcja";
+            } else if (sum > 710) {
+                lab = "12:35:00";  
+                b = "przerwa";
+            } else if (sum > 700) {
+                lab = "11:50:00"; 
+                b = "lekcja";
+            } else if (sum > 655) {
+                lab = "11:40:00";  
+                b = "przerwa";
+            } else if (sum > 635) {
+                lab = "10:55:00"; 
+                b = "lekcja";
+            } else if (sum > 590) {
+                lab = "10:35:00";  
+                b = "przerwa";
+            } else if (sum > 580) {
+                lab = "9:50:00"; 
+                b = "lekcja";
+            } else if (sum > 535) {
+                lab = "9:40:00";  
+                b = "przerwa";
+            } else if (sum > 525) {
+                lab = "8:55:00"; 
+                b = "lekcja";
+            } else if (sum > 480) {
+                lab = "8:45:00";  
+                b = "przerwa";
+            } else if (sum > 475) {
+                lab = "8:00:00"; 
+                b = "lekcja";
+            } else if (sum > 430) {
+                lab = "7:55:00"; 
+                b = "przerwa";
+            } else if (sum > 0) {
+                lab = "7:10:00"; 
+                b = "lekcja";
+            }
+
+            if (m < 10) m = "0" + m;
+            if (s < 10) s = "0" + s;
+
+            var time = h + ":" + m + ":" + s;
+            document.getElementById("clock").innerHTML = time;
+
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            // Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+            var month = monthNames[date.getMonth()];
+            var day = date.getDate();
+            var year = date.getFullYear();
+
+            var lessons = new Date(month + " " + day + " " + year + " " + lab); 
+
+            var left = lessons - date.getTime();
+
+            var s2 = left / 1000;
+            var m2 = s2 / 60;
+            var h2 = m2 / 60;
+
+            var hLeft = Math.floor(h2);
+            var mLeft = Math.floor(m2 % 60);
+            var sLeft = Math.floor(s2 % 60 + 1);
+
+            if (mLeft < 10) mLeft = "0" + mLeft; 
+            if (sLeft < 10) sLeft = "0" + sLeft;
+
+            var left = hLeft + ":" + mLeft + ":" + sLeft + " - " + b;
+
+            document.getElementById("lessons").innerHTML = left;
+
+            setTimeout(clock, 1000);
+        };
+
+
+
+    </script>
+
+
+    <style>
+        body {
+            background-color: #212121;
+            color: #fff;
+            text-align: center;
+            font-family: Verdana;
+        }
+
+        div {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: #fff 2px solid;
+            border-radius: 5px;
+            width: min-content;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0 0 -5px 0;
+            padding: 0;
+        }
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+
+<body onload="clock()">
+    <div>
+        <h1 id="clock"></h1>
+        <p id="lessons"></p>
+    </div>
+</body>
+
+</html>

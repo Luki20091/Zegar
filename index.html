@@ -106,12 +106,12 @@
 
             var hLeft = Math.floor(h2);
             var mLeft = Math.floor(m2 % 60);
-            var sLeft = Math.floor(s2 % 60 + 1);
+            var sLeft = Math.floor(s2 % 60);
 
             if (mLeft < 10) mLeft = "0" + mLeft; 
             if (sLeft < 10) sLeft = "0" + sLeft;
 
-            var left = hLeft + ":" + mLeft + ":" + sLeft + " - " + b;
+            var left = hLeft + ":" + mLeft + ":" + (sLeft + 1) + " - " + b;
 
             document.getElementById("lessons").innerHTML = left;
 

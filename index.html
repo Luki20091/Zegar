@@ -2,167 +2,517 @@
 <html lang="pl">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="author" content="Łukasz Kucharczyk" />
-    <title>Zegar</title>
-    <script>
-        function clock()
-        {
-            var date = new Date();
-            var h = date.getHours();
-            var m = date.getMinutes();
-            var s = date.getSeconds();
-            var lab = "0:00:00";
-            var b = "";
-            var sum = h * 60 + m;
+	<meta charset="utf-8" />
+	<meta name="author" content="Łukasz Kucharczyk" />
+	<title>Zegar 2P</title>
+	<script>
+		function clock() {
+			var date = new Date();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			var lab = "0:00:00";
+			var b = "";
+			var sum = h * 60 + m;
+            var add = 0;
+            var w = date.getDay();
 
-            if (sum > 1014) {
-                lab = "7:10:01";  
-                b = "przerwa";
-            } else if (sum > 964) {
-                lab = "16:55:01";
-                b = "lekcja";
-            } else if (sum > 919) {
-                lab = "16:05:01";  
-                b = "przerwa";
-            } else if (sum > 914) {
-                lab = "15:20:01"; 
-                b = "lekcja";
-            } else if (sum > 869) {
-                lab = "15:15:01";  
-                b = "przerwa";
-            } else if (sum > 864) {
-                lab = "14:30:01"; 
-                b = "lekcja";
-            } else if (sum > 819) {
-                lab = "14:25:01";  
-                b = "przerwa";
-            } else if (sum > 809) {
-                lab = "13:40:01"; 
-                b = "lekcja";
-            } else if (sum > 764) {
-                lab = "13:30:01";  
-                b = "przerwa";
-            } else if (sum > 754) {
-                lab = "12:45:01"; 
-                b = "lekcja";
-            } else if (sum > 709) {
-                lab = "12:35:01";  
-                b = "przerwa";
-            } else if (sum > 699) {
-                lab = "11:50:01"; 
-                b = "lekcja";
-            } else if (sum > 654) {
-                lab = "11:40:01";  
-                b = "przerwa";
-            } else if (sum > 634) {
-                lab = "10:55:01"; 
-                b = "lekcja";
-            } else if (sum > 589) {
-                lab = "10:35:01";  
-                b = "przerwa";
-            } else if (sum > 579) {
-                lab = "9:50:01"; 
-                b = "lekcja";
-            } else if (sum > 534) {
-                lab = "9:40:01";  
-                b = "przerwa";
-            } else if (sum > 524) {
-                lab = "8:55:01"; 
-                b = "lekcja";
-            } else if (sum > 479) {
-                lab = "8:45:01";  
-                b = "przerwa";
-            } else if (sum > 474) {
-                lab = "8:01:01"; 
-                b = "lekcja";
-            } else if (sum > 429) {
-                lab = "7:55:01"; 
-                b = "przerwa";
-            } else if (sum > 0) {
-                lab = "7:10:01"; 
-                b = "lekcja";
+            if (w == 1) {
+
+                if (sum > 914) {
+                    lab = "8:55:01";
+                    b = "fizyka L-104";
+                    add = 1;
+                } else if (sum > 869) {
+                    lab = "15:15:01";
+                    b = "przerwa";
+                } else if (sum > 864) {
+                    lab = "14:30:01";
+                    b = "religia L-105";
+                } else if (sum > 819) {
+                    lab = "14:25:01";
+                    b = "przerwa";
+                } else if (sum > 809) {
+                    lab = "13:40:01";
+                    b = "matematyka L-104";
+                } else if (sum > 764) {
+                    lab = "13:30:01";
+                    b = "przerwa";
+                } else if (sum > 754) {
+                    lab = "12:45:01";
+                    b = "matematyka L-104";
+                } else if (sum > 709) {
+                    lab = "12:35:01";
+                    b = "przerwa";
+                } else if (sum > 699) {
+                    lab = "11:50:01";
+                    b = "fizyka 201";
+                } else if (sum > 654) {
+                    lab = "11:40:01";
+                    b = "przerwa";
+                } else if (sum > 634) {
+                    lab = "10:55:01";
+                    b = "angielski 104B";
+                } else if (sum > 589) {
+                    lab = "10:35:01";
+                    b = "długa przerwa";
+                } else if (sum > 579) {
+                    lab = "9:50:01";
+                    b = "wf";
+                } else if (sum > 534) {
+                    lab = "9:40:01";
+                    b = "przerwa";
+                } else if (sum > 524) {
+                    lab = "8:55:01";
+                    b = "wf";
+                } else if (sum > 479) {
+                    lab = "8:45:01";
+                    b = "przerwa";
+                } else if (sum > 0) {
+                    lab = "8:01:01";
+                    b = "historia 103";
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            } else if (w == 2) {
+
+                if (sum > 964) {
+                    lab = "7:10:01";
+                    b = "informatyka L-102";
+                    add = 1;
+                } else if (sum > 919) {
+                    lab = "16:05:01";
+                    b = "przerwa";
+                } else if (sum > 914) {
+                    lab = "15:20:01";
+                    b = "progr.apl.in 105";
+                } else if (sum > 869) {
+                    lab = "15:15:01";
+                    b = "przerwa";
+                } else if (sum > 864) {
+                    lab = "14:30:01";
+                    b = "progr.apl.in 105";
+                } else if (sum > 819) {
+                    lab = "14:25:01";
+                    b = "przerwa";
+                } else if (sum > 809) {
+                    lab = "13:40:01";
+                    b = "matematyka 208";
+                } else if (sum > 764) {
+                    lab = "13:30:01";
+                    b = "przerwa";
+                } else if (sum > 754) {
+                    lab = "12:45:01";
+                    b = "chemia L-115";
+                } else if (sum > 709) {
+                    lab = "12:35:01";
+                    b = "przerwa";
+                } else if (sum > 699) {
+                    lab = "11:50:01";
+                    b = "przedsięb. L-8";
+                } else if (sum > 654) {
+                    lab = "11:40:01";
+                    b = "przerwa";
+                } else if (sum > 634) {
+                    lab = "10:55:01";
+                    b = "historia L-106";
+                } else if (sum > 589) {
+                    lab = "10:35:01";
+                    b = "długa przerwa";
+                } else if (sum > 579) {
+                    lab = "9:50:01";
+                    b = "religia L-9";
+                } else if (sum > 534) {
+                    lab = "9:40:01";
+                    b = "przerwa";
+                } else if (sum > 0) {
+                    lab = "8:55:01";
+                    b = "fizyka L-104";
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            } else if (w == 3) {
+
+
+                if (sum > 864) {
+                    lab = "8:00:01";
+                    b = "angielski 104B";
+                    add = 1;
+                } else if (sum > 819) {
+                    lab = "14:25:01";
+                    b = "przerwa";
+                } else if (sum > 809) {
+                    lab = "13:40:01";
+                    b = "biologia 207";
+                } else if (sum > 764) {
+                    lab = "13:30:01";
+                    b = "przerwa";
+                } else if (sum > 754) {
+                    lab = "12:45:01";
+                    b = "niemiecki 104B";
+                } else if (sum > 709) {
+                    lab = "12:35:01";
+                    b = "przerwa";
+                } else if (sum > 699) {
+                    lab = "11:50:01";
+                    b = "Proj.oprogra. 105";
+                } else if (sum > 654) {
+                    lab = "11:40:01";
+                    b = "przerwa";
+                } else if (sum > 634) {
+                    lab = "10:55:01";
+                    b = "Proj.oprogra. 105";
+                } else if (sum > 589) {
+                    lab = "10:35:01";
+                    b = "długa przerwa";
+                } else if (sum > 579) {
+                    lab = "9:50:01";
+                    b = "Proj.oprogra. 105";
+                } else if (sum > 534) {
+                    lab = "9:40:01";
+                    b = "przerwa";
+                } else if (sum > 524) {
+                    lab = "8:55:01";
+                    b = "polski L-4";
+                } else if (sum > 479) {
+                    lab = "8:45:01";
+                    b = "przerwa";
+                } else if (sum > 474) {
+                    lab = "8:01:01";
+                    b = "chemia L-1";
+                } else if (sum > 429) {
+                    lab = "7:55:01";
+                    b = "przerwa";
+                } else if (sum > 0) {
+                    lab = "7:10:01";
+                    b = "informatyka L-102";
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            } else if (w == 4) {
+
+
+                if (sum > 914) {
+                    lab = "7:10:01";
+                    b = "Progr.obiekt 105";
+                    add = 1;
+                } else if (sum > 869) {
+                    lab = "15:15:01";
+                    b = "przerwa";
+                } else if (sum > 864) {
+                    lab = "14:30:01";
+                    b = "progr.apl.in 39A";
+                } else if (sum > 819) {
+                    lab = "14:25:01";
+                    b = "przerwa";
+                } else if (sum > 809) {
+                    lab = "13:40:01";
+                    b = "progr.apl.in 39A";
+                } else if (sum > 764) {
+                    lab = "13:30:01";
+                    b = "przerwa";
+                } else if (sum > 754) {
+                    lab = "12:45:01";
+                    b = "polski L-106";
+                } else if (sum > 709) {
+                    lab = "12:35:01";
+                    b = "przerwa";
+                } else if (sum > 699) {
+                    lab = "11:50:01";
+                    b = "polski L-106";
+                } else if (sum > 654) {
+                    lab = "11:40:01";
+                    b = "przerwa";
+                } else if (sum > 634) {
+                    lab = "10:55:01";
+                    b = "proj. i ad.baz 9";
+                } else if (sum > 589) {
+                    lab = "10:35:01";
+                    b = "długa przerwa";
+                } else if (sum > 579) {
+                    lab = "9:50:01";
+                    b = "proj. i ad.baz 9";
+                } else if (sum > 534) {
+                    lab = "9:40:01";
+                    b = "przerwa";
+                } else if (sum > 524) {
+                    lab = "8:55:01";
+                    b = "proj. i ad.baz 9";
+                } else if (sum > 479) {
+                    lab = "8:45:01";
+                    b = "przerwa";
+                } else if (sum > 0) {
+                    lab = "8:01:01";
+                    b = "angielski 104B";
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            } else if (w == 5) {
+
+                if (sum > 809) {
+                    lab = "8:00:01";
+                    b = "historia 103";
+                    add = 3;
+                } else if (sum > 764) {
+                    lab = "13:30:01";
+                    b = "przerwa";
+                } else if (sum > 754) {
+                    lab = "12:45:01";
+                    b = "biologia L-1";
+                } else if (sum > 709) {
+                    lab = "12:35:01";
+                    b = "przerwa";
+                } else if (sum > 699) {
+                    lab = "11:50:01";
+                    b = "godz. wych L-101";
+                } else if (sum > 654) {
+                    lab = "11:40:01";
+                    b = "przerwa";
+                } else if (sum > 634) {
+                    lab = "10:55:01";
+                    b = "wf L";
+                } else if (sum > 589) {
+                    lab = "10:35:01";
+                    b = "długa przerwa";
+                } else if (sum > 579) {
+                    lab = "9:50:01";
+                    b = "niemiecki 34";
+                } else if (sum > 534) {
+                    lab = "9:40:01";
+                    b = "przerwa";
+                } else if (sum > 524) {
+                    lab = "8:55:01";
+                    b = "Progr.obiekt 105";
+                } else if (sum > 479) {
+                    lab = "8:45:01";
+                    b = "przerwa";
+                } else if (sum > 474) {
+                    lab = "8:01:01";
+                    b = "Progr.obiekt 105";
+                } else if (sum > 429) {
+                    lab = "7:55:01";
+                    b = "przerwa";
+                } else if (sum > 0) {
+                    lab = "7:10:01";
+                    b = "Progr.obiekt 105";
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            } else if (w == 6) {
+                lab = "8:00:01";
+                b = "historia 103";
+                add = 2;
+
+            } else if (w == 7) {
+                lab = "8:00:01";
+                b = "historia 103";
+                add = 1;
+
             }
 
-            if (m < 10) m = "0" + m;
-            if (s < 10) s = "0" + s;
-
-            var time = h + ":" + m + ":" + s;
-            document.getElementById("clock").innerHTML = time;
-
-            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            // Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-            var month = monthNames[date.getMonth()];
-            var day = date.getDate();
-            var year = date.getFullYear();
-
-            var lessons = new Date(month + " " + day + " " + year + " " + lab); 
-
-            var left = lessons - date.getTime();
-
-            var s2 = left / 1000;
-            var m2 = s2 / 60;
-            var h2 = m2 / 60;
-
-            var hLeft = Math.floor(h2);
-            var mLeft = Math.floor(m2 % 60);
-            var sLeft = Math.floor(s2 % 60);
-
-            if (mLeft < 10) mLeft = "0" + mLeft; 
-            if (sLeft < 10) sLeft = "0" + sLeft;
-
-            var left = hLeft + ":" + mLeft + ":" + sLeft + " - " + b;
-
-            document.getElementById("lessons").innerHTML = left;
-
-            setTimeout(clock, 200);
-        };
 
 
 
-    </script>
 
 
-    <style>
+
+
+
+
+
+
+
+
+
+			if (m < 10) m = "0" + m;
+			if (s < 10) s = "0" + s;
+
+			var time = h + ":" + m + ":" + s;
+			document.getElementById("clock").innerHTML = time;
+
+			const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			// Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+			var month = monthNames[date.getMonth()];
+			var day = date.getDate();
+			var year = date.getFullYear();
+
+			var lessons = new Date(month + " " + (day + add) + " " + year + " " + lab);
+
+			var left = lessons - date.getTime();
+
+			var s2 = left / 1000;
+			var m2 = s2 / 60;
+			var h2 = m2 / 60;
+
+			var hLeft = Math.floor(h2);
+			var mLeft = Math.floor(m2 % 60);
+			var sLeft = Math.floor(s2 % 60);
+
+			if (mLeft < 10) mLeft = "0" + mLeft;
+			if (sLeft < 10) sLeft = "0" + sLeft;
+
+			left = hLeft + ":" + mLeft + ":" + sLeft + " - " + b;
+
+			document.getElementById("lessons").innerHTML = left;
+
+
+			setTimeout(clock, 200);
+		};
+
+
+
+
+	</script>
+
+
+	<style>
         body {
             background-color: #212121;
             color: #fff;
             text-align: center;
             font-family: Verdana;
-            text-shadow: 1px 1px 12px #000;
+            cursor: context-menu;
+            text-shadow: 0 0 20px #000;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
 
-        div {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: #fff 8px solid;
-            border-radius: 30px;
-            width: min-content;
-            padding: 10px;
-            box-shadow: 1px 1px 15px #000;
-        }
+		body > div {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border: #fff 8px solid;
+			border-radius: 30px;
+			width: max-content;
+			padding: 15px;
+			box-shadow: 0 0 20px #000;
+		}
 
-        h1 {
-            margin: 0 0 -5px 0;
-            padding: 0;
-            font-size: 180px;
-        }
-        p {
-            margin: 0;
-            padding: 0;
-            font-size: 70px;
-        }
+		h2 {
+			margin: 0 0 -5px 0;
+			padding: 0;
+			font-size: 170px;
+		}
 
-    </style>
+		p {
+			margin: 0;
+			padding: 0;
+			font-size: 60px;
+		}
+
+
+
+
+
+		/*
+		#progress {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -30;
+			width: 100%;
+			height: 100%;
+			background-color: #04AA6D;
+			margin: 0;
+			border-radius: 22px;
+		}*/
+	</style>
 </head>
 
 <body onload="clock()">
-    <div>
-        <h1 id="clock"></h1>
-        <p id="lessons"></p>
-    </div>
+	<div>
+		<h2 id="clock"></h2>
+		<p id="lessons"></p>
+		<div id="progress">
+		</div>
+	</div>
 </body>
 
 </html>

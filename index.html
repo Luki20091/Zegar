@@ -448,10 +448,26 @@
             } else {
                 left = mLeft + ":" + sLeft + " - " + b;
             } 
-			document.getElementById("lessons").innerHTML = left;
-            //document.getElementById("progress").innerHTML = lessons / Math.floor(s2) / 3600000 + "%";
-            //document.getElementById("progress").innerHTML = lessons / 1000 + " " + Math.floor(s2);
+            document.getElementById("lessons").innerHTML = left;
 
+
+
+            /*
+            var endDate = new Date("Mar 1, 2021 10:00:00").getTime();
+            var startDate = new Date("Jun 20, 2020, 10:00:00").getTime();
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distanceWhole = endDate - startDate;
+            var distanceLeft = endDate - now;
+
+
+
+            //document.getElementById("progress").innerHTML = lessons / Math.floor(s2) / 3600000 + "%";
+            document.getElementById("progress").innerHTML = endDate + " - " + startDate+ " " + s2 / 3 + "%";
+            */
 
 
 

@@ -17,6 +17,9 @@
             var add = 0;
             var w = date.getDay();
 
+            var progress = document.getElementById("progress");
+
+
             if (w == 1) {
 
                 if (sum > 914) {
@@ -25,7 +28,7 @@
                     add = 1;
                 } else if (sum > 869) {
                     lab = "15:15:01";
-                    b = "przerwa";
+                    b = "koniec";
                 } else if (sum > 864) {
                     lab = "14:30:01";
                     b = "religia L-105";
@@ -98,7 +101,7 @@
                     add = 1;
                 } else if (sum > 919) {
                     lab = "16:05:01";
-                    b = "przerwa";
+                    b = "koniec";
                 } else if (sum > 914) {
                     lab = "15:20:01";
                     b = "progr.apl.in 105";
@@ -175,7 +178,7 @@
                     add = 1;
                 } else if (sum > 819) {
                     lab = "14:25:01";
-                    b = "przerwa";
+                    b = "koniec";
                 } else if (sum > 809) {
                     lab = "13:40:01";
                     b = "biologia 207";
@@ -250,7 +253,7 @@
                     add = 1;
                 } else if (sum > 869) {
                     lab = "15:15:01";
-                    b = "przerwa";
+                    b = "koniec";
                 } else if (sum > 864) {
                     lab = "14:30:01";
                     b = "progr.apl.in 39A";
@@ -323,7 +326,7 @@
                     add = 3;
                 } else if (sum > 764) {
                     lab = "13:30:01";
-                    b = "przerwa";
+                    b = "koniec";
                 } else if (sum > 754) {
                     lab = "12:45:01";
                     b = "biologia L-1";
@@ -397,9 +400,11 @@
             }
 
 
-
-
-
+            if (b == "przerwa" || b == "koniec") {
+                progress.style.background = "linear-gradient(30deg, #981b5b 1%, #e71d58 85%)";
+            } else {
+                progress.style.background = "linear-gradient(30deg, #1b9838 1%, #1de746 85%)";
+            }
 
 
 
@@ -426,6 +431,7 @@
 
 			var left = lessons - date.getTime();
 
+
 			var s2 = left / 1000;
 			var m2 = s2 / 60;
 			var h2 = m2 / 60;
@@ -437,9 +443,16 @@
 			if (mLeft < 10) mLeft = "0" + mLeft;
 			if (sLeft < 10) sLeft = "0" + sLeft;
 
-			left = hLeft + ":" + mLeft + ":" + sLeft + " - " + b;
-
+            if (hLeft > 0) {
+                left = hLeft + ":" + mLeft + ":" + sLeft + " - " + b;
+            } else {
+                left = mLeft + ":" + sLeft + " - " + b;
+            } 
 			document.getElementById("lessons").innerHTML = left;
+            //document.getElementById("progress").innerHTML = lessons / Math.floor(s2) / 3600000 + "%";
+            //document.getElementById("progress").innerHTML = lessons / 1000 + " " + Math.floor(s2);
+
+
 
 
 			setTimeout(clock, 200);
@@ -458,7 +471,7 @@
             text-align: center;
             font-family: Verdana;
             cursor: context-menu;
-            text-shadow: 0 0 20px #000;
+            /*text-shadow: 0 0 20px #000;*/
             -webkit-user-select: none;
             -moz-user-select: none;
         }
@@ -491,7 +504,6 @@
 
 
 
-		/*
 		#progress {
 			position: absolute;
 			top: 0;
@@ -502,7 +514,7 @@
 			background-color: #04AA6D;
 			margin: 0;
 			border-radius: 22px;
-		}*/
+		}
 	</style>
 </head>
 

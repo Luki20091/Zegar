@@ -391,20 +391,22 @@
                 lab = "8:00:01";
                 b = "historia 103";
                 add = 2;
-
             } else if (w == 7) {
                 lab = "8:00:01";
                 b = "historia 103";
                 add = 1;
+            };
 
-            }
 
-
-            if (b == "przerwa" || b == "koniec" || b == "długa przerwa") {
+            if (b == "przerwa") {
                 progress.style.background = "linear-gradient(30deg, #981b5b 1%, #e71d58 85%)";
+            } else if (b == "długa pzerwa") {
+                progress.style.background = "linear-gradient(30deg, #1b7298 1%, #1daee7 85%)";
+            } else if (b == "koniec") {
+                progress.style.background = "linear-gradient(30deg, #581B98 1%, #9C1DE7 85%)";
             } else {
                 progress.style.background = "linear-gradient(30deg, #1b9838 1%, #1de746 85%)";
-            }
+            };
 
 
 
@@ -447,27 +449,21 @@
                 left = hLeft + ":" + mLeft + ":" + sLeft + " - " + b;
             } else {
                 left = mLeft + ":" + sLeft + " - " + b;
-            } 
+            };
             document.getElementById("lessons").innerHTML = left;
 
+            var c = 45;
 
+            progress.style.width = s2 / (c * 60) * 100 + "%";
 
-            /*
-            var endDate = new Date("Mar 1, 2021 10:00:00").getTime();
-            var startDate = new Date("Jun 20, 2020, 10:00:00").getTime();
-
-            // Get todays date and time
-            var now = new Date().getTime();
-
-            // Find the distance between now and the count down date
-            var distanceWhole = endDate - startDate;
-            var distanceLeft = endDate - now;
-
-
-
-            //document.getElementById("progress").innerHTML = lessons / Math.floor(s2) / 3600000 + "%";
-            document.getElementById("progress").innerHTML = endDate + " - " + startDate+ " " + s2 / 3 + "%";
-            */
+            if (progress.clientWidth < 20) {
+                progress.style.top = "6px";
+                progress.style.height = "calc(100% - 12px)";
+            } else {
+                progress.style.top = "0";
+                progress.style.height = "100%";
+            }
+            //document.getElementById("progress").innerHTML = endDate + " - " + startDate+ " " + s2 / 3 + "%"; Math.floor()
 
 
 
@@ -487,7 +483,7 @@
             text-align: center;
             font-family: Verdana;
             cursor: context-menu;
-            /*text-shadow: 0 0 20px #000;*/
+            text-shadow: 0 0 1px #000;
             -webkit-user-select: none;
             -moz-user-select: none;
         }
@@ -497,7 +493,7 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			border: #fff 8px solid;
+			outline: #fff 8px solid;
 			border-radius: 30px;
 			width: max-content;
 			padding: 15px;
@@ -520,17 +516,17 @@
 
 
 
-		#progress {
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: -30;
-			width: 100%;
-			height: 100%;
-			background-color: #04AA6D;
-			margin: 0;
-			border-radius: 22px;
-		}
+        #progress {
+            position: absolute;
+            left: 0;
+            z-index: -30;
+            width: 100%;
+            background-color: #04AA6D;
+            margin: 0;
+            border-radius: 20px 10px 10px 20px;
+            box-shadow: 0 0 10px #000;
+            transition: height 1s ease-in-out, top 1s ease-in-out;
+        }
 	</style>
 </head>
 

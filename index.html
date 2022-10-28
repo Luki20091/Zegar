@@ -628,6 +628,18 @@
             max-width: 100%;
             transform: translateZ(0)
         }
+
+
+
+        /* Safari 11+ */
+
+        @media not all and (min-resolution:.001dpcm) {
+            @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+                #in {
+                    outline: unset;
+                }
+            }
+        }
 	</style>
 </head>
 

@@ -509,7 +509,7 @@
 
 
 
-			progress.style.width = (s2 / (c * 60) * 100) + "%";
+			//progress.style.width = (s2 / (c * 60) * 100) + "%";
 
 			if (progress.clientWidth < 20) {
 				if (progress.style.top != "6px") {
@@ -525,8 +525,8 @@
                 if (progress.style.top != "0") {
                     progress.style.top = "0";
                 }
-				if (progress.style.height != "100%") {
-					progress.style.height = "100%";
+                if (progress.style.height != "100%") {
+                    progress.style.height = "100%";
                 }
 				if (progress.style.transition != "none") {
 					progress.style.transition = "none";
@@ -574,14 +574,27 @@
             transform: translateZ(0)
         }
 
+        #in-all {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 8px;
+            border-radius: 32px 32px 32px 32px;
+            -webkit-border-radius: 32px 32px 32px 32px;
+            -moz-border-radius: 32px 32px 32px 32px;
+            box-shadow: 0 0 20px #000;
+        }
+
         #in {
             outline: #fff 8px solid;
-            border-radius: 30px 30px 30px 30px;
-            -webkit-border-radius: 30px 30px 30px 30px;
-            -moz-border-radius: 30px 30px 30px 30px;
+            border-radius: 28px 28px 28px 28px;
+            -webkit-border-radius: 28px 28px 28px 28px;
+            -moz-border-radius: 28px 28px 28px 28px;
             width: max-content;
             padding: 15px;
-            box-shadow: 0 0 20px #000;
+            background-color: #212121;
             transform: translateZ(0)
         }
 
@@ -604,13 +617,13 @@
             position: absolute;
             left: 0;
             z-index: -30;
-            width: 100%;
+            width: 100px;
             background: linear-gradient(30deg, #13822d 1%, #1ada41 85%);
             margin: 0;
-            border-radius: 20px 10px 10px 20px;
-            -webkit-border-radius: 20px 10px 10px 20px;
-            -moz-border-radius: 20px 10px 10px 20px;
-            box-shadow: 0 0 10px #000;
+            border-radius: 28px 28px 28px 28px;
+            -webkit-border-radius: 28px 28px 28px 28px;
+            -moz-border-radius: 28px 28px 28px 28px;
+            //box-shadow: 0 0 10px #000;
             transition: height 1s ease-in-out, top 1s ease-in-out;
             max-width: 100%;
             transform: translateZ(0)
@@ -620,10 +633,12 @@
 
 <body onload="clock()">
 	<div id="out">
-		<div id="in">
-			<h2 id="clock"></h2>
-			<p id="lessons"></p>
-			<div id="progress">
+		<div id="in-all">
+			<div id="in">
+				<h2 id="clock"></h2>
+				<p id="lessons"></p>
+				<div id="progress">
+				</div>
 			</div>
 		</div>
 	</div>

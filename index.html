@@ -576,10 +576,9 @@
 
         #in {
             outline: #fff 8px solid;
-            border-radius: 30px;
-            -webkit-border-radius: 30px;
-            -moz-border-radius: 30px;
-            -webkit-appearance: none;
+            border-radius: 30px 30px 30px 30px;
+            -webkit-border-radius: 30px 30px 30px 30px;
+            -moz-border-radius: 30px 30px 30px 30px;
             width: max-content;
             padding: 15px;
             box-shadow: 0 0 20px #000;
@@ -601,19 +600,21 @@
 
 
 
-		#progress {
-			position: absolute;
-			left: 0;
-			z-index: -30;
-			width: 100%;
-			background: linear-gradient(30deg, #13822d 1%, #1ada41 85%);
-			margin: 0;
-			border-radius: 20px 10px 10px 20px;
-			box-shadow: 0 0 10px #000;
-			transition: height 1s ease-in-out, top 1s ease-in-out;
-			max-width: 100%;
-			transform: translateZ(0)
-		}
+        #progress {
+            position: absolute;
+            left: 0;
+            z-index: -30;
+            width: 100%;
+            background: linear-gradient(30deg, #13822d 1%, #1ada41 85%);
+            margin: 0;
+            border-radius: 20px 10px 10px 20px;
+            -webkit-border-radius: 20px 10px 10px 20px;
+            -moz-border-radius: 20px 10px 10px 20px;
+            box-shadow: 0 0 10px #000;
+            transition: height 1s ease-in-out, top 1s ease-in-out;
+            max-width: 100%;
+            transform: translateZ(0)
+        }
 	</style>
 </head>
 

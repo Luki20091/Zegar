@@ -356,12 +356,12 @@
 
 
             } else if (w == 5) {
-
+                
                 if (sum > 809) {
                     lab = "8:00:01";
                     b = "historia 103";
                     add = 3;
-                    c = 3990;
+                    c = 4050;
                 } else if (sum > 764) {
                     lab = "13:30:01";
                     b = "koniec";
@@ -436,12 +436,12 @@
                 lab = "8:00:01";
                 b = "historia 103";
                 add = 2;
-                c = 2550;
+                c = 2600;
             } else if (w == 7) {
                 lab = "8:00:01";
                 b = "historia 103";
                 add = 1
-                c = 1110;
+                c = 1160;
             };
 
 
@@ -461,7 +461,7 @@
 
 
 
-
+            console.log(lab + " " + c)
 
 
 
@@ -503,14 +503,16 @@
 
 
 
-            progress.style.width = s2 / (c * 60) * 100 + "%";
+            progress.style.width = (s2 / (c * 60) * 100) + "%";
 
             if (progress.clientWidth < 20) {
                 progress.style.top = "6px";
                 progress.style.height = "calc(100% - 12px)";
+                progress.style.transition = "height 1s ease-in-out, top 1s ease-in-out";
             } else {
                 progress.style.top = "0";
                 progress.style.height = "100%";
+                progress.style.transition = "none";
             }
 
 
@@ -573,6 +575,8 @@
             border-radius: 20px 10px 10px 20px;
             box-shadow: 0 0 10px #000;
             transition: height 1s ease-in-out, top 1s ease-in-out;
+            max-width: 100%;
+            transform: translateZ(0)
         }
 	</style>
 </head>

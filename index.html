@@ -432,12 +432,12 @@
 
 
 
-			} else if (w == 6) {
+			} else if (w == 6) { //odliczanie od 00:00 jest inne c niż od popołudnia
 				lab = "8:00:01";
 				b = "historia 103";
 				add = 2;
 				c = 2600;
-			} else if (w == 7) {
+			} else {
 				lab = "8:00:01";
 				b = "historia 103";
 				add = 1
@@ -509,7 +509,7 @@
 
 
 
-			progress.style.width = (s2 / (c * 60) * 100) + "%";
+			progress.style.width = s2 / (c * 60) * 100 + "%";
 
 			if (progress.clientWidth < 20) {
 				if (progress.style.top != "6px") {

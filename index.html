@@ -5,14 +5,24 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
+    <div id="blocks"></div>
+    <!--
+        <iframe id="plan" src="https://www.zst-radom.edu.pl/plan_www/plany/o28.html" sandbox="allow-scripts allow-same-origin allow-modal"></iframe>
+    -->
+    <script>
+        const targetUrl = 'https://www.zst-radom.edu.pl/plan_www/plany/o28.html';
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
-	<iframe id="plan" src="https://www.zst-radom.edu.pl/plan_www/plany/o28.html" sandbox="allow-scripts allow-same-origin allow-modal"></iframe>
+        fetch(proxyUrl + targetUrl)
+            .then(response => response.text())
+            .then(data => f(data))
+            .catch(error => console.error('Error:', error));
 
-	<script>
-        const i = document.getElementById('plan');
-        const e = i.contentWindow.document.querySelector('.tytulnapis');
-        console.log(i); 
-        console.log(e); 
-	</script>
+        function f(data) {
+            document.getElementById("blocks").innerHTML = data;
+            console.log(document.querySelector('#blocks .tytulnapis'));
+        }
+
+    </script>
 </body>
 </html>

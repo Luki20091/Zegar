@@ -1,4 +1,4 @@
-## Elektroniczny Zegar Klasy 3P1
+## Zegar Klasy 3P1
 
 Jest to w pełni funkcjonalny zegar elektroniczny, wraz z postępem czasu do kolejnej lekcji/przerwy.
 

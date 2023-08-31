@@ -1,6 +1,6 @@
-## Zegar klasy 2P gr. 1
+## Elektroniczny Zegar Klasy 3P1
 
-Jest to w pełni funkcjonalny zegar elektroniczny, wraz z odliczaniem czasu do kolejnej lekcji/przerwy/...
+Jest to w pełni funkcjonalny zegar elektroniczny, wraz z postępem czasu do kolejnej lekcji/przerwy.
 
 
 ## Autorzy

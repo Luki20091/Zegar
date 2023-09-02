@@ -12,7 +12,12 @@
         <div id="progress">
         </div>
     </div>
+    <iframe id="cors" src="https://cors-anywhere.herokuapp.com/corsdemo" hidden></iframe>
     <script>
+        window.onload = function () {
+            $("#cors").contents().find("body > form > p:nth-child(2) > input[type=submit]:nth-child(1)").click();
+        };
+
         const targetUrl = 'https://www.zst-radom.edu.pl/plan_www/plany/o28.html';
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 

@@ -5,9 +5,10 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-	<div id="all">
+	<div id="all" style="visibility:hidden">
 		<p id="lessonBack"></p>
 		<div id="clock">
+			<p id="actualLesson"></p>
 			<h2 id="time">
 				<span id="h"></span>
 				<span>:</span>
@@ -33,23 +34,24 @@
 			height: 100%;
 		}
 
-		body {
-			font-family: 'Cabin Sketch';
-			position: relative;
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			padding: 0;
-			background-color: #212121;
-			color: #fff;
-			text-align: center;
-			cursor: context-menu;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			overflow: hidden;
-			text-shadow: 0px 0px 10px #151515;
-			text-wrap: none;
-		}
+        body {
+            font-family: 'Cabin Sketch';
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #212121;
+            color: #fff;
+            text-align: center;
+            cursor: context-menu;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            overflow: hidden;
+            text-shadow: 0px 0px 10px #151515;
+            text-wrap: none;
+            text-transform: lowercase;
+        }
 
 		#all {
 			position: absolute;
@@ -74,7 +76,7 @@
 		}
 
 		#all p {
-			margin: 300px 20px;
+			margin: 330px 20px;
 			padding: 0;
 			font-size: 40px;
 			display: flex;
@@ -87,13 +89,10 @@
 
 		#clock p {
 			margin: 0;
-			font-size: 60px;
+			font-size: 50px;
 			color: #fff;
 		}
 
-		#all p::first-letter {
-			text-transform: uppercase;
-		}
 
 		#all h2 {
 			margin: 0 0 -10px 0;
@@ -123,7 +122,7 @@
 
 		#all h2 span#s {
 			justify-content: left;
-			margin-left: 10px;
+			margin-left: 20px;
 		}
 
 
@@ -138,9 +137,8 @@
 			border-radius: 28px 28px 28px 28px;
 			-webkit-border-radius: 28px 28px 28px 28px;
 			-moz-border-radius: 28px 28px 28px 28px;
-			transition: height 1s ease-in-out, top 1s ease-in-out;
+			transition: height 1s ease-in-out, top 1s ease-in-out, width 3s ease-in-out;
 			max-width: 100%;
-			transform: translateZ(0)
 		}
 
 
@@ -183,16 +181,16 @@
 
 		function clock() {
 			var date = new Date();
-			var h = date.getHours();
-			var m = date.getMinutes();
-			//var h = 9;
-			//var m = 45;
+			//var h = date.getHours();
+			//var m = date.getMinutes();
+			var h = 11;
+			var m = 55;
 			var s = date.getSeconds();
 			var hm = h * 60 + m;
 
 
 			var x = 1;
-			while (document.querySelector(`th:nth-child(${x})`) != null && document.querySelector(`th:nth-child(${x})`).innerText.toLowerCase() != 'piątek') { //getDayName(date)  'Czwartek'
+			while (document.querySelector(`th:nth-child(${x})`) != null && document.querySelector(`th:nth-child(${x})`).innerText.toLowerCase() != 'czwartek') { //getDayName(date)  'Czwartek'   <-----  tu jest błąd w sobotę i niedzielę!!!
 				x++;
 			};
 
@@ -235,12 +233,12 @@
 
 			if (m < 10) m = "0" + m;
 			if (s < 10) s = "0" + s;
-			document.getElementById("h").innerHTML = h;
-			document.getElementById("m").innerHTML = m;
-			document.getElementById("s").innerHTML = s;
+            if (document.getElementById("h").innerHTML != h) document.getElementById("h").innerHTML = h;
+            if (document.getElementById("m").innerHTML != m) document.getElementById("m").innerHTML = m;
+            if (document.getElementById("s").innerHTML != s) document.getElementById("s").innerHTML = s;
 
 
-
+            if (document.getElementById("all").style.visibility == 'hidden') document.getElementById("all").style.visibility = 'visible'
 
 
 			setTimeout(clock, 100);
@@ -253,48 +251,56 @@
 
 		function setLesson(x, y, hm, t1, t2) {
 			if (document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`) != null) {
-				document.getElementById("lesson").innerHTML = ((t2 - hm) + 'm&nbsp;-&nbsp;Przerwa'); //(t2 - hm) + 'm, ' + (((t2 - hm) / (t2 - t1)) * 100) + '%'
-				setLessonBack(x, y, 1);
-				setLessonForward(x, y, 1);
-				setProgress('lesson', hm, t1, t2);
-			} else {
-				document.getElementById("lesson").innerHTML = ('Brak lekcji');
+				if (document.getElementById("lesson").innerHTML != ((t2 - hm) + 'm&nbsp;-&nbsp;Przerwa')) {
+					document.getElementById("lesson").innerHTML = ((t2 - hm) + 'm&nbsp;-&nbsp;Przerwa');
+					setLessonBack(x, y, 1);
+					setLessonForward(x, y, 1);
+                    setProgress('lesson', hm, t1, t2);
+                    if (document.getElementById("actualLesson").innerHTML != 'Teraz&nbsp;-&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;')) document.getElementById("actualLesson").innerHTML = 'Teraz&nbsp;-&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;');
+				}
+            } else {
+				if (document.getElementById("actualLesson").innerHTML != 'Teraz&nbsp;-&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;')) document.getElementById("actualLesson").innerHTML = 'Teraz&nbsp;-&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;');
+				if (document.getElementById("lesson").innerHTML != ('Brak lekcji')) document.getElementById("lesson").innerHTML = ('Brak lekcji');
 			}
 		};
 
 
 		function setBreak(x, y, hm, t1, t2) {
 			if (document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`) != null && document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.includes('-2/2') != true) {
-				document.getElementById("lesson").innerHTML = ((t2 - hm) + 'm&nbsp;-&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;')); //(t2 - hm) + 'm, ' + (((t2 - hm) / (t2 - t1)) * 100) + '%'
-				setLessonBack(x, y, 1);
-				setLessonForward(x, y, 1);
-				setProgress('break', hm, t1, t2);
-			} else {
-				document.getElementById("lesson").innerHTML = ('Brak lekcji');
+				if (document.getElementById("lesson").innerHTML != ((t2 - hm) + 'm&nbsp;-&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'))) {
+					document.getElementById("lesson").innerHTML = ((t2 - hm) + 'm&nbsp;-&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;')); //(t2 - hm) + 'm, ' + (((t2 - hm) / (t2 - t1)) * 100) + '%'
+					setLessonBack(x, y, 1);
+					setLessonForward(x, y, 1);
+					setProgress('break', hm, t1, t2);
+					if (document.getElementById("actualLesson").innerHTML != 'Teraz&nbsp;-&nbsp;Przerwa') document.getElementById("actualLesson").innerHTML = 'Teraz&nbsp;-&nbsp;Przerwa';
+				};
+            } else {
+                if (document.getElementById("actualLesson").innerHTML != 'Teraz&nbsp;-&nbsp;Przerwa') document.getElementById("actualLesson").innerHTML = 'Teraz&nbsp;-&nbsp;Przerwa';
+				if (document.getElementById("lesson").innerHTML != ('Brak lekcji')) document.getElementById("lesson").innerHTML = ('Brak lekcji');
 			};
 		};
 
 
 		function setLessonBack(x, y, i) {
 			if (document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`) != null && document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.includes('-2/2') != true) {
-				document.getElementById("lessonBack").innerHTML = (document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'));
+				if (document.getElementById("lessonBack").innerHTML != (document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'))) document.getElementById("lessonBack").innerHTML = (document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'));
 			} else {
-				document.getElementById("lessonBack").innerHTML = ('&nbsp;');
+				if (document.getElementById("lessonBack").innerHTML != ('')) document.getElementById("lessonBack").innerHTML = ('');
 			};
 		};
 
 		function setLessonForward(x, y, i) {
 			if (document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`) != null && document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.includes('-2/2') != true) {
-				document.getElementById("lessonForward").innerHTML = (document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'));
+				if (document.getElementById("lessonForward").innerHTML != (document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'))) document.getElementById("lessonForward").innerHTML = (document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'));
 			} else {
-				document.getElementById("lessonForward").innerHTML = ('&nbsp;');
+				if (document.getElementById("lessonForward").innerHTML = ('')) document.getElementById("lessonForward").innerHTML = ('');
 			};
 		};
 
 		function setProgress(type, hm, t1, t2) {
 			var progress = document.getElementById("progress");
 
-			progress.style.width = (((t2 - hm) / (t2 - t1)) * 100) + '%';
+			if (progress.style.width != (((t2 - hm) / (t2 - t1)) * 100) + '%') progress.style.width = (((t2 - hm) / (t2 - t1)) * 100) + '%';
 
 			if (type == "lesson") {
 				if (progress.style.background != "linear-gradient(30deg, #981b5b 1%, #e71d58 85%)") {

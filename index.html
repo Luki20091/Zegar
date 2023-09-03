@@ -5,380 +5,380 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-    <div id="all">
-        <p id="lessonBack"></p>
-        <div id="clock">
-            <h2 id="time">
-                <span id="h"></span>
-                <span>:</span>
-                <span id="m"></span>
-                <span>:</span>
-                <span id="s"></span>
-            </h2>
-            <p id="lesson"></p>
-            <div id="progress"></div>
-        </div>
-        <p id="lessonForward"></p>
-    </div>
-
-
-    <table id="tab" border="1" hidden></table>
-    <iframe id="cors" src="https://cors-anywhere.herokuapp.com/corsdemo" hidden></iframe>
-
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap');
-
-        html {
-            height: 100%;
-        }
-
-        body {
-            font-family: 'Cabin Sketch';
-            position: relative;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: #212121;
-            color: #fff;
-            text-align: center;
-            cursor: context-menu;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            overflow: hidden;
-            text-shadow: 0px 0px 10px #151515;
-            text-wrap: none;
-        }
-
-        #all {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        #clock {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 30px #000;
-            outline: #ebebeb 7px solid;
-            border-radius: 28px 28px 28px 28px;
-            -webkit-border-radius: 28px 28px 28px 28px;
-            -moz-border-radius: 28px 28px 28px 28px;
-            width: max-content;
-            padding: 15px;
-            background-color: #2e2e2e;
-        }
-
-        #all p {
-            margin: 300px 20px;
-            padding: 0;
-            font-size: 40px;
-            display: flex;
-            align-items: center;
-            flex-wrap: nowrap;
-            flex-direction: row;
-            justify-content: center;
-            color: #ababab;
-        }
-
-        #clock p {
-            margin: 0;
-            font-size: 60px;
-            color: #fff;
-        }
-
-        #all p::first-letter {
-            text-transform: uppercase;
-        }
-
-        #all h2 {
-            margin: 0 0 -10px 0;
-            padding: 0;
-            font-size: 130px;
-            font-weight: 400;
-            display: flex;
-            align-items: center;
-            flex-wrap: nowrap;
-            flex-direction: row;
-            justify-content: center;
-        }
-
-        #all h2 span {
-            width: 40px;
-            display: flex;
-            align-items: center;
-            flex-wrap: nowrap;
-            flex-direction: row;
-            justify-content: center;
-            margin-left: 5px;
-        }
-        #all h2 span#h, #all h2 span#m, #all h2 span#s {
-            width: 170px;
-            margin-left: 0;
-        }
-
-        #all h2 span#s {
-            justify-content: left;
-            margin-left: 10px;
-        }
-
-
-        #progress {
-            position: fixed;
-            left: 0;
-            z-index: -30;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(30deg, #13822d 1%, #1ada41 85%);
-            margin: 0;
-            border-radius: 28px 28px 28px 28px;
-            -webkit-border-radius: 28px 28px 28px 28px;
-            -moz-border-radius: 28px 28px 28px 28px;
-            transition: height 1s ease-in-out, top 1s ease-in-out;
-            max-width: 100%;
-            transform: translateZ(0)
-        }
-
+	<div id="all">
+		<p id="lessonBack"></p>
+		<div id="clock">
+			<h2 id="time">
+				<span id="h"></span>
+				<span>:</span>
+				<span id="m"></span>
+				<span>:</span>
+				<span id="s"></span>
+			</h2>
+			<p id="lesson"></p>
+			<div id="progress"></div>
+		</div>
+		<p id="lessonForward"></p>
+	</div>
+
+
+	<table id="tab" border="1" hidden></table>
+	<iframe id="cors" src="https://cors-anywhere.herokuapp.com/corsdemo" hidden></iframe>
+
+
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap');
+
+		html {
+			height: 100%;
+		}
+
+		body {
+			font-family: 'Cabin Sketch';
+			position: relative;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			background-color: #212121;
+			color: #fff;
+			text-align: center;
+			cursor: context-menu;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			overflow: hidden;
+			text-shadow: 0px 0px 10px #151515;
+			text-wrap: none;
+		}
+
+		#all {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		#clock {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			box-shadow: 0 0 30px #000;
+			outline: #ebebeb 7px solid;
+			border-radius: 28px 28px 28px 28px;
+			-webkit-border-radius: 28px 28px 28px 28px;
+			-moz-border-radius: 28px 28px 28px 28px;
+			width: max-content;
+			padding: 15px;
+			background-color: #2e2e2e;
+		}
+
+		#all p {
+			margin: 300px 20px;
+			padding: 0;
+			font-size: 40px;
+			display: flex;
+			align-items: center;
+			flex-wrap: nowrap;
+			flex-direction: row;
+			justify-content: center;
+			color: #ababab;
+		}
+
+		#clock p {
+			margin: 0;
+			font-size: 60px;
+			color: #fff;
+		}
+
+		#all p::first-letter {
+			text-transform: uppercase;
+		}
+
+		#all h2 {
+			margin: 0 0 -10px 0;
+			padding: 0;
+			font-size: 130px;
+			font-weight: 400;
+			display: flex;
+			align-items: center;
+			flex-wrap: nowrap;
+			flex-direction: row;
+			justify-content: center;
+		}
+
+		#all h2 span {
+			width: 40px;
+			display: flex;
+			align-items: center;
+			flex-wrap: nowrap;
+			flex-direction: row;
+			justify-content: center;
+			margin-left: 5px;
+		}
+		#all h2 span#h, #all h2 span#m, #all h2 span#s {
+			width: 170px;
+			margin-left: 0;
+		}
+
+		#all h2 span#s {
+			justify-content: left;
+			margin-left: 10px;
+		}
+
+
+		#progress {
+			position: fixed;
+			left: 0;
+			z-index: -30;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(30deg, #13822d 1%, #1ada41 85%);
+			margin: 0;
+			border-radius: 28px 28px 28px 28px;
+			-webkit-border-radius: 28px 28px 28px 28px;
+			-moz-border-radius: 28px 28px 28px 28px;
+			transition: height 1s ease-in-out, top 1s ease-in-out;
+			max-width: 100%;
+			transform: translateZ(0)
+		}
+
 
 
 
-        /* Safari 11+ */
+		/* Safari 11+ */
 
-        @media not all and (min-resolution:.001dpcm) {
-            @supports (-webkit-appearance:none) and (stroke-color:transparent) {
-                #in {
-                    outline: unset;
-                }
-            }
-        }
-    </style>
-    <script>
-        window.onload = function () {
-            $("#cors").contents().find("body > form > p:nth-child(2) > input[type=submit]:nth-child(1)").click();
-        };
-
-        const targetUrl = 'https://www.zst-radom.edu.pl/plan_www/plany/o28.html';
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+		@media not all and (min-resolution:.001dpcm) {
+			@supports (-webkit-appearance:none) and (stroke-color:transparent) {
+				#in {
+					outline: unset;
+				}
+			}
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			$("#cors").contents().find("body > form > p:nth-child(2) > input[type=submit]:nth-child(1)").click();
+		};
+
+		const targetUrl = 'https://www.zst-radom.edu.pl/plan_www/plany/o28.html';
+		const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
-        fetch(proxyUrl + targetUrl)
-            .then(response => response.text())
-            .then(data => send(data))
-            .catch(error => console.error('Error:', error));
-
-        function send(data) {
-            const parser = new DOMParser();
-            const html = parser.parseFromString(data, 'text/html');
-            const body = html.body;
-
-            document.getElementById("tab").innerHTML = body.querySelector("div > table > tbody > tr:nth-child(1) > td > table").innerHTML;
-            clock();
-        }
-
-
-
-
-        function clock() {
-            var date = new Date();
-            var h = date.getHours();
-            var m = date.getMinutes();
-            //var h = 9;
-            //var m = 45;
-            var s = date.getSeconds();
-            var hm = h * 60 + m;
-
-
-            var x = 1;
-            while (document.querySelector(`th:nth-child(${x})`) != null && document.querySelector(`th:nth-child(${x})`).innerText.toLowerCase() != 'pi¹tek') { //getDayName(date)  'Czwartek'
-                x++;
-            };
-
-
-
-            var y = 2;
-            while (document.querySelector(`tr:nth-child(${y}) td.g:nth-child(2)`) != null) {
-                var yVal = document.querySelector(`tr:nth-child(${y}) td.g:nth-child(2)`).innerText.split('-');
-                var yVal1 = yVal[0].trim().split(':');
-                var yVal2 = yVal[1].trim().split(':');
-
-                var yVal1Hm = parseInt(yVal1[0]) * 60 + parseInt(yVal1[1]);
-                var yVal2Hm = parseInt(yVal2[0]) * 60 + parseInt(yVal2[1]);
-
-                //console.log('spr lekcje miêdzy: ' + yVal1 + ' a ' + yVal2);
-                if (hm >= yVal1Hm && hm < yVal2Hm) {
-                    setLesson(x, y, hm, yVal1Hm, yVal2Hm);
-                    break;
-                };
-                if (document.querySelector(`tr:nth-child(${y + 1}) td.g:nth-child(2)`) != null) {
-                    var y1Val = document.querySelector(`tr:nth-child(${y + 1}) td.g:nth-child(2)`).innerText.split('-');
-                    var y1Val1 = y1Val[0].trim().split(':');
-
-                    var y1Val1Hm = parseInt(y1Val1[0]) * 60 + parseInt(y1Val1[1]);
-
-                    //console.log('spr przerwe miêdzy: ' + yVal2 + ' a ' + y1Val1);
-                    if (hm >= yVal2Hm && hm < y1Val1Hm) {
-                        setBreak(x, y + 1, hm, yVal2Hm, y1Val1Hm);
-                        break;
-                    };
-                };
-                y++;
-            };
-
-            if (document.querySelector(`tr:nth-child(${y}) td.g:nth-child(2)`) == null) {
-                setBreak(x, y, hm, yVal1Hm, yVal2Hm);
-            };
-
-
-
-            if (m < 10) m = "0" + m;
-            if (s < 10) s = "0" + s;
-            document.getElementById("h").innerHTML = h;
-            document.getElementById("m").innerHTML = m;
-            document.getElementById("s").innerHTML = s;
-
-
-
-
-
-            setTimeout(clock, 100);
-        };
-
-        function getDayName(date = new Date(), locale = 'pl-PL') {
-            return date.toLocaleDateString(locale, { weekday: 'long' });
-        };
-
-
-        function setLesson(x, y, hm, t1, t2) {
-            if (document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`) != null) {
-                document.getElementById("lesson").innerHTML = ((t2 - hm) + 'm&nbsp;-&nbsp;Przerwa'); //(t2 - hm) + 'm, ' + (((t2 - hm) / (t2 - t1)) * 100) + '%'
-                setLessonBack(x, y, 1);
-                setLessonForward(x, y, 1);
-                setProgress('lesson', hm, t1, t2);
-            } else {
-                document.getElementById("lesson").innerHTML = ('Brak lekcji');
-            }
-        };
-
-
-        function setBreak(x, y, hm, t1, t2) {
-            if (document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`) != null && document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.includes('-2/2') != true) {
-                document.getElementById("lesson").innerHTML = ((t2 - hm) + 'm&nbsp;-&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;')); //(t2 - hm) + 'm, ' + (((t2 - hm) / (t2 - t1)) * 100) + '%'
-                setLessonBack(x, y, 1);
-                setLessonForward(x, y, 1);
-                setProgress('break', hm, t1, t2);
-            } else {
-                document.getElementById("lesson").innerHTML = ('Brak lekcji');
-            };
-        };
-
-
-        function setLessonBack(x, y, i) {
-            if (document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`) != null && document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.includes('-2/2') != true) {
-                document.getElementById("lessonBack").innerHTML = (document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'));
-            } else {
-                document.getElementById("lessonBack").innerHTML = ('&nbsp;');
-            };
-        };
-
-        function setLessonForward(x, y, i) {
-            if (document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`) != null && document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.includes('-2/2') != true) {
-                document.getElementById("lessonForward").innerHTML = (document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'));
-            } else {
-                document.getElementById("lessonForward").innerHTML = ('&nbsp;');
-            };
-        };
-
-        function setProgress(type, hm, t1, t2) {
-            var progress = document.getElementById("progress");
-
-            progress.style.width = (((t2 - hm) / (t2 - t1)) * 100) + '%';
-
-            if (type == "lesson") {
-                if (progress.style.background != "linear-gradient(30deg, #981b5b 1%, #e71d58 85%)") {
-                    progress.style.background = "linear-gradient(30deg, #981b5b 1%, #e71d58 85%)";
-                }
-            } else if (type == "break") {
-                if (progress.style.background != "linear-gradient(30deg, #1b7298 1%, #1daee7 85%)" && t2 - t1 == 20) {
-                    progress.style.background = "linear-gradient(30deg, #1b7298 1%, #1daee7 85%)";
-                }
-                if (progress.style.background != "linear-gradient(30deg, #13822d 1%, #1ada41 85%)" && t2 - t1 != 20) {
-                    progress.style.background = "linear-gradient(30deg, #13822d 1%, #1ada41 85%)";
-                }
-            };
-
-
-            if (progress.clientWidth < 20) {
-                if (progress.style.top != "6px") {
-                    progress.style.top = "6px";
-                }
-                if (progress.style.height != "calc(100% - 12px)") {
-                    progress.style.height = "calc(100% - 12px)";
-                }
-                if (progress.style.transition != "height 1s ease-in-out, top 1s ease-in-out") {
-                    progress.style.transition = "height 1s ease-in-out, top 1s ease-in-out";
-                }
-            } else {
-                if (progress.style.top != "0") {
-                    progress.style.top = "0";
-                }
-                if (progress.style.height != "100%") {
-                    progress.style.height = "100%";
-                }
-                if (progress.style.transition != "none") {
-                    progress.style.transition = "none";
-                }
-            }
-        };
-
-
-        //j.polski         Polski
-        //j.angielski      Angielski
-        //j.niemiecki      Niemiecki
-        //r_matematyka     Matematyka
-        //r_fizyka         Fizyka
-        //progr.apl.in     Internetowe
-        //Progr.obiekt     Objektowe
-        //proj.i ad.ba     Bazy danych
-        //Pro.apl.desk     Desktopowe
-        //godz.wych        Wychowawcza
-        //
-        //
-        //.replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza')
-
-
-        //sprawdza dzieñ (x)
-            // document.querySelector("th:nth-child(x)").innerText;
-            // zakres 3-7
-
-        //sprawdza godzinê (y)
-            // document.querySelector(" tr:nth-child(y) td.g:nth-child(2)").innerText;
-            // zakres: 2-y
-
-
-        //dostêp przez (x, y)
-            // document.querySelector("tr:nth-child(y) > td:nth-child(x) span.p:nth-child(1)").innerText;
-            //zakres 2.3-y.7
-
-            //null = koniec lekcji
-
-
-
-
-
-            //nie trzeba pobieraæ wysokoœci tabeli: null = koniec
-
-            //nie dawaæ w js zamieniania wielkoœci pierwszej litery, tylko w css
-            //#selector:: first - letter {
-            //    text - transform: uppercase;
-            //}
-
-
-            //w przysz³oœci dodaæ aktualny dzieñ z boku np.
-            //lub poprzedni¹ lekcjê i nastêpn¹ => nad i pod
-
-    </script>
+		fetch(proxyUrl + targetUrl)
+			.then(response => response.text())
+			.then(data => send(data))
+			.catch(error => console.error('Error:', error));
+
+		function send(data) {
+			const parser = new DOMParser();
+			const html = parser.parseFromString(data, 'text/html');
+			const body = html.body;
+
+			document.getElementById("tab").innerHTML = body.querySelector("div > table > tbody > tr:nth-child(1) > td > table").innerHTML;
+			clock();
+		}
+
+
+
+
+		function clock() {
+			var date = new Date();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			//var h = 9;
+			//var m = 45;
+			var s = date.getSeconds();
+			var hm = h * 60 + m;
+
+
+			var x = 1;
+			while (document.querySelector(`th:nth-child(${x})`) != null && document.querySelector(`th:nth-child(${x})`).innerText.toLowerCase() != 'piÄ…tek') { //getDayName(date)  'Czwartek'
+				x++;
+			};
+
+
+
+			var y = 2;
+			while (document.querySelector(`tr:nth-child(${y}) td.g:nth-child(2)`) != null) {
+				var yVal = document.querySelector(`tr:nth-child(${y}) td.g:nth-child(2)`).innerText.split('-');
+				var yVal1 = yVal[0].trim().split(':');
+				var yVal2 = yVal[1].trim().split(':');
+
+				var yVal1Hm = parseInt(yVal1[0]) * 60 + parseInt(yVal1[1]);
+				var yVal2Hm = parseInt(yVal2[0]) * 60 + parseInt(yVal2[1]);
+
+				//console.log('spr lekcje miÄ™dzy: ' + yVal1 + ' a ' + yVal2);
+				if (hm >= yVal1Hm && hm < yVal2Hm) {
+					setLesson(x, y, hm, yVal1Hm, yVal2Hm);
+					break;
+				};
+				if (document.querySelector(`tr:nth-child(${y + 1}) td.g:nth-child(2)`) != null) {
+					var y1Val = document.querySelector(`tr:nth-child(${y + 1}) td.g:nth-child(2)`).innerText.split('-');
+					var y1Val1 = y1Val[0].trim().split(':');
+
+					var y1Val1Hm = parseInt(y1Val1[0]) * 60 + parseInt(y1Val1[1]);
+
+					//console.log('spr przerwe miÄ™dzy: ' + yVal2 + ' a ' + y1Val1);
+					if (hm >= yVal2Hm && hm < y1Val1Hm) {
+						setBreak(x, y + 1, hm, yVal2Hm, y1Val1Hm);
+						break;
+					};
+				};
+				y++;
+			};
+
+			if (document.querySelector(`tr:nth-child(${y}) td.g:nth-child(2)`) == null) {
+				setBreak(x, y, hm, yVal1Hm, yVal2Hm);
+			};
+
+
+
+			if (m < 10) m = "0" + m;
+			if (s < 10) s = "0" + s;
+			document.getElementById("h").innerHTML = h;
+			document.getElementById("m").innerHTML = m;
+			document.getElementById("s").innerHTML = s;
+
+
+
+
+
+			setTimeout(clock, 100);
+		};
+
+		function getDayName(date = new Date(), locale = 'pl-PL') {
+			return date.toLocaleDateString(locale, { weekday: 'long' });
+		};
+
+
+		function setLesson(x, y, hm, t1, t2) {
+			if (document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`) != null) {
+				document.getElementById("lesson").innerHTML = ((t2 - hm) + 'm&nbsp;-&nbsp;Przerwa'); //(t2 - hm) + 'm, ' + (((t2 - hm) / (t2 - t1)) * 100) + '%'
+				setLessonBack(x, y, 1);
+				setLessonForward(x, y, 1);
+				setProgress('lesson', hm, t1, t2);
+			} else {
+				document.getElementById("lesson").innerHTML = ('Brak lekcji');
+			}
+		};
+
+
+		function setBreak(x, y, hm, t1, t2) {
+			if (document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`) != null && document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.includes('-2/2') != true) {
+				document.getElementById("lesson").innerHTML = ((t2 - hm) + 'm&nbsp;-&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;')); //(t2 - hm) + 'm, ' + (((t2 - hm) / (t2 - t1)) * 100) + '%'
+				setLessonBack(x, y, 1);
+				setLessonForward(x, y, 1);
+				setProgress('break', hm, t1, t2);
+			} else {
+				document.getElementById("lesson").innerHTML = ('Brak lekcji');
+			};
+		};
+
+
+		function setLessonBack(x, y, i) {
+			if (document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`) != null && document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.includes('-2/2') != true) {
+				document.getElementById("lessonBack").innerHTML = (document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y - i}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'));
+			} else {
+				document.getElementById("lessonBack").innerHTML = ('&nbsp;');
+			};
+		};
+
+		function setLessonForward(x, y, i) {
+			if (document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`) != null && document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.includes('-2/2') != true) {
+				document.getElementById("lessonForward").innerHTML = (document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.p:nth-child(1)`).innerText.replace('-1/2', '').replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza') + '&nbsp;' + document.querySelector(`tr:nth-child(${y + i}) > td:nth-child(${x}) span.s:nth-child(3)`).innerText.replace(' ', '&nbsp;'));
+			} else {
+				document.getElementById("lessonForward").innerHTML = ('&nbsp;');
+			};
+		};
+
+		function setProgress(type, hm, t1, t2) {
+			var progress = document.getElementById("progress");
+
+			progress.style.width = (((t2 - hm) / (t2 - t1)) * 100) + '%';
+
+			if (type == "lesson") {
+				if (progress.style.background != "linear-gradient(30deg, #981b5b 1%, #e71d58 85%)") {
+					progress.style.background = "linear-gradient(30deg, #981b5b 1%, #e71d58 85%)";
+				}
+			} else if (type == "break") {
+				if (progress.style.background != "linear-gradient(30deg, #1b7298 1%, #1daee7 85%)" && t2 - t1 == 20) {
+					progress.style.background = "linear-gradient(30deg, #1b7298 1%, #1daee7 85%)";
+				}
+				if (progress.style.background != "linear-gradient(30deg, #13822d 1%, #1ada41 85%)" && t2 - t1 != 20) {
+					progress.style.background = "linear-gradient(30deg, #13822d 1%, #1ada41 85%)";
+				}
+			};
+
+
+			if (progress.clientWidth < 20) {
+				if (progress.style.top != "6px") {
+					progress.style.top = "6px";
+				}
+				if (progress.style.height != "calc(100% - 12px)") {
+					progress.style.height = "calc(100% - 12px)";
+				}
+				if (progress.style.transition != "height 1s ease-in-out, top 1s ease-in-out") {
+					progress.style.transition = "height 1s ease-in-out, top 1s ease-in-out";
+				}
+			} else {
+				if (progress.style.top != "0") {
+					progress.style.top = "0";
+				}
+				if (progress.style.height != "100%") {
+					progress.style.height = "100%";
+				}
+				if (progress.style.transition != "none") {
+					progress.style.transition = "none";
+				}
+			}
+		};
+
+
+		//j.polski         Polski
+		//j.angielski      Angielski
+		//j.niemiecki      Niemiecki
+		//r_matematyka     Matematyka
+		//r_fizyka         Fizyka
+		//progr.apl.in     Internetowe
+		//Progr.obiekt     Objektowe
+		//proj.i ad.ba     Bazy danych
+		//Pro.apl.desk     Desktopowe
+		//godz.wych        Wychowawcza
+		//
+		//
+		//.replace('j.polski', 'Polski').replace('j.angielski', 'Angielski').replace('j.niemiecki', 'Niemiecki').replace('r_matematyka', 'Matematyka').replace('r_fizyka', 'Fizyka').replace('progr.apl.in', 'Internetowe').replace('Progr.obiekt', 'Objektowe').replace('proj.i ad.ba', 'Bazy danych').replace('Pro.apl.desk', 'Desktopowe').replace('godz.wych', 'Wychowawcza')
+
+
+		//sprawdza dzieÅ„ (x)
+			// document.querySelector("th:nth-child(x)").innerText;
+			// zakres 3-7
+
+		//sprawdza godzinÄ™ (y)
+			// document.querySelector(" tr:nth-child(y) td.g:nth-child(2)").innerText;
+			// zakres: 2-y
+
+
+		//dostÄ™p przez (x, y)
+			// document.querySelector("tr:nth-child(y) > td:nth-child(x) span.p:nth-child(1)").innerText;
+			//zakres 2.3-y.7
+
+			//null = koniec lekcji
+
+
+
+
+
+			//nie trzeba pobieraÄ‡ wysokoÅ›ci tabeli: null = koniec
+
+			//nie dawaÄ‡ w js zamieniania wielkoÅ›ci pierwszej litery, tylko w css
+			//#selector:: first - letter {
+			//    text - transform: uppercase;
+			//}
+
+
+			//w przyszÅ‚oÅ›ci dodaÄ‡ aktualny dzieÅ„ z boku np.
+			//lub poprzedniÄ… lekcjÄ™ i nastÄ™pnÄ… => nad i pod
+
+	</script>
 </body>
 </html>

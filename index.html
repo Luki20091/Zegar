@@ -159,7 +159,7 @@
 			$("#cors").contents().find("body > form > p:nth-child(2) > input[type=submit]:nth-child(1)").click();
 		};
 
-		const targetUrl = 'https://www.zst-radom.edu.pl/plan_www/plany/o28.html';
+        const targetUrl = 'https://www.zst-radom.edu.pl/plan_www/plany/o24.html';
 		const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
 		fetch(proxyUrl + targetUrl)
@@ -181,16 +181,16 @@
 
 		function clock() {
 			var date = new Date();
-			//var h = date.getHours();
-			//var m = date.getMinutes();
-			var h = 11;
-			var m = 55;
+			var h = date.getHours();
+			var m = date.getMinutes();
+			//var h = 11;
+			//var m = 55;
 			var s = date.getSeconds();
 			var hm = h * 60 + m;
 
 
 			var x = 1;
-			while (document.querySelector(`th:nth-child(${x})`) != null && document.querySelector(`th:nth-child(${x})`).innerText.toLowerCase() != 'czwartek') { //getDayName(date)  'Czwartek'   <-----  tu jest błąd w sobotę i niedzielę!!!
+            while (document.querySelector(`th:nth-child(${x})`) != null && document.querySelector(`th:nth-child(${x})`).innerText.toLowerCase() != getDayName(date)) { //getDayName(date)  'Czwartek'   <-----  tu jest błąd w sobotę i niedzielę!!!
 				x++;
 			};
 
